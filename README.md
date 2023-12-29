@@ -1,11 +1,10 @@
-# Experiment--03-Half-Subtractor-and-Full-subtractor
 ## Implementation-of-Half-subtractor-and-Full-subtractor-circuit
 ## AIM:
 To design a half subtractor and full subtractor circuit and verify its truth table in Quartus using Verilog programming.
 
 ## Equipments Required:
-## Hardware – PCs, Cyclone II , USB flasher
-## Software – Quartus prime
+Hardware – PCs, Cyclone II , USB flasher
+Software – Quartus prime
 ## Theory
 Subtractor circuits take two binary numbers as input and subtract one binary number input from the other binary number input. Similar to adders, it gives out two outputs, difference and borrow (carry-in the case of Adder). There are two types of subtractors.
 
@@ -26,89 +25,104 @@ A full subtractor is a combinational circuit that performs subtraction involving
 Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + BBin
 
 ## Procedure:
-Procedure
 1.	Create a New Project:
 
 Open Quartus and create a new project by selecting "File" > "New Project Wizard."
-
+ 
 Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
+
+
+
 2.	Create a New Design File:
 
 Once the project is created, right-click on the project name in the Project Navigator and select "Add New File."
-Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description.
+Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description
 language.
+
+
+
 3.	Write the Combinational Logic Code:
+
+
 Open the newly created Verilog or VHDL file and write the code for your combinational logic.
+
+
+
 4.	Compile the Project:
 
 To compile the project, click on "Processing" > "Start Compilation" in the menu.
 Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
+
+
+
 5.	Analyze and Fix Errors:
+
+
 If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window.
 Review and fix any issues in your code if necessary. View the RTL diagram.
+
+
+
 6.	Verification:
 
 Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF".
 Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
-Give the Input Combinations according to the Truth Table and then simulate the
+Give the Input Combinations according to the Truth Table amd then simulate the
 Output Waveform.
 
 ## Program:
-/*
-Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: PRITHIVIRAJAN V
-RegisterNumber:  23003859
-*/
+
 HALF SUBTRACTOR
 ~~~
-module halfsubtractor(diff,borrow,a,b);
+module Half_sub(a,b,differ,borrow);
 input a,b;
-output diff,borrow;
-assign diff = a^b;
-assign borrow = -a&b;
-endmodule
+output differ,borrow;
+xor(differ,a,b);
+assign borrow = ~a & b;
+endmodule 
 ~~~
 FULL SUBTRACTOR
 ~~~
-module fullsubtractor(diff,carry,a,b,c);
+module Full_sub(a,b,c,borrow,differ);
 input a,b,c;
-output diff,carry;
-xor(diff,a,b,c);
-assign carry = (~a)&c | (~a)&b |(b&c);
-endmodule
+output borrow,differ;
+xor(differ,a,b,c);
+assign borrow = (~a)&c | (~a)&b |(b&c);
+endmodule 
 ~~~
 
 ## Output:
 
-## Truthtable
+## Truthtable:
+### HALF SUBTRACTOR:
 
-HALF SUBTRACTOR:
+![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/4387d7b2-e98c-463b-a18e-48e9aa83d774)
 
-![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/6a89a638-f4ad-4509-80e5-b728fab823fa)
+### FULL SUBTRACTOR:
 
-FULL SUBTRACTOR:
-
-![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/030b34ca-cd11-4591-a754-456e3c149845)
+![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/0d165c65-2e06-4375-ba41-22d572363145)
 
 ##  RTL realization
 
-HALF SUBTRACTOR:
+### HALF SUBTRACTOR:
 
-![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/0a75c393-aab1-4a80-8776-ebda674ce088)
+![289937311-c9d89939-28b7-46a7-84ca-90191b7bc980](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/70433d91-297f-4940-8396-53b959a5e51f)
 
-FULL SUBTRACTOR
+### FULL SUBTRACTOR:
 
-![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/1081f72d-dac5-4952-814e-6a5003e79a11)
+![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/9006488c-3d8a-4204-aa81-a9e32da6971d)
+
 
 ## Timing diagram 
 
-HALF SUBTRACTOR:
+### HALF SUBTRACTOR:
 
 ![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/2a5d9491-ded0-477b-b938-7ed7171c899c)
 
-FULL SUBTRACTOR:
+### FULL SUBTRACTOR:
 
 ![image](https://github.com/Prithivirajan2911/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/147020085/a677a0c7-824a-4132-af39-999fff32fb40)
+
 
 
 ## Result:
